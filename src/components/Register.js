@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchToken } from "../lib/api-calls";
+import { registerUser } from "../lib/api-calls";
 import { addUserToStore } from "../actions/index";
 
 
-let LoginWrapper = ({ props, addUserToStore }) => {
+let RegisterUserWrapper = ({ props, addUserToStore }) => {
 
   let userCredentials = {};
 
   let handleSubmit = event => {
     event.preventDefault();
     if(userCredentials.email && userCredentials.password) {
-      fetchToken(userCredentials)
+      registerUser(userCredentials)
         .then(res => res.json())
         .then(userDetails => {
           if(userDetails.token) {
@@ -28,6 +28,10 @@ let LoginWrapper = ({ props, addUserToStore }) => {
     }
   };
 
+  let readUserName = event => {
+    userCredentials.username = event.target.value;
+  };
+
   let readEmail = event => {
     userCredentials.email = event.target.value;
   };
@@ -36,22 +40,22 @@ let LoginWrapper = ({ props, addUserToStore }) => {
     userCredentials.password = event.target.value;
   };
 
-
   return (
-    <div className="login">
-      <div className="login-title">
-        <h1>Request Quest RPG</h1>
-      </div>
-      <div className="login-form">
+    <div className="register">
+      <div>
+        <h1>Register New User</h1>
+      </div>    
+      <div>
         <form className="form" onSubmit={handleSubmit}>
-          <input type="text" name="email" onChange={readEmail} placeholder="email" />
-          <input type="password" name="password" onChange={readPassword} placeholder="password" />
+          <input type="text" name="username" onChange={readUserName} placeholder="username"/>
+          <input type="text" name="email" onChange={readEmail} placeholder="email"/>
+          <input type="password" name="password" onChange={readPassword} placeholder="password"/>
           <input className="submit" type="submit" value="Submit" />
         </form>
       </div>
-      <div className="login-register">
-        <p>New User? Please&nbsp;
-          <Link to={"/register"}>Register</Link>&nbsp;here
+      <div>
+        <p>Already have an Account? Please&nbsp;
+          <Link to={"/login"}>Login</Link>&nbsp;here
         </p>
       </div>
     </div>
@@ -62,6 +66,6 @@ let mapStateToProps = (state, props) => ({ state, props });
 
 let mapDispatchToProps = dispatch =>  ({ addUserToStore: (userDetails) => dispatch(addUserToStore(userDetails)) });
 
-let Login = connect(mapStateToProps, mapDispatchToProps)(LoginWrapper);
+let Register = connect(mapStateToProps, mapDispatchToProps)(RegisterUserWrapper);
 
-export default Login;
+export default Register;
