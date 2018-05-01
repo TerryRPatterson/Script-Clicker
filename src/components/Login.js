@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { fetchToken } from "../lib/api-calls";
 import { addUserToStore } from "../actions/index";
 import PropTypes from "prop-types";
@@ -55,7 +55,7 @@ let LoginWrapper = ({ addUserToStore,history, location:{state:prevPath} }) => {
       </div>
       <div className="login-register">
         <p>New User? Please&nbsp;
-          <Redirect to={"/register"}>Register</Redirect>&nbsp;here
+          <Link to={"/register"} replace>Register</Link>&nbsp;here
         </p>
       </div>
     </div>
@@ -63,8 +63,8 @@ let LoginWrapper = ({ addUserToStore,history, location:{state:prevPath} }) => {
 };
 
 LoginWrapper.propTypes = {
-  addUserToStore:PropTypes.function.isRequired,
-  lastLocation:PropTypes.string.isRequired,
+  addUserToStore:PropTypes.func.isRequired,
+  location:PropTypes.object.isRequired,
   history:PropTypes.object.isRequired
 };
 

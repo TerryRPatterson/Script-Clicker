@@ -1,5 +1,5 @@
 export let fetchToken = (userCredentials) =>
-  fetch("https://dc-rpg.herokuapp.com/api/login", {
+  fetch(`${process.env.BACKEND}/api/login`, {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
@@ -8,7 +8,7 @@ export let fetchToken = (userCredentials) =>
   });
 
 export let registerUser = (userCredentials) =>
-  fetch("https://dc-rpg.herokuapp.com/api/create", {
+  fetch(`${process.env.BACKEND}/api/create`, {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
