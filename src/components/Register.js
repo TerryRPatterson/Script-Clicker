@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../lib/api-calls";
 import { addUserToStore } from "../actions/index";
+import PropTypes from "prop-types";
 
-
-let RegisterUserWrapper = ({ props, addUserToStore }) => {
+let RegisterUserWrapper = ({ addUserToStore, location:{state:prevPath} }) => {
 
   let userCredentials = {};
 
@@ -18,7 +18,11 @@ let RegisterUserWrapper = ({ props, addUserToStore }) => {
           if(userDetails.token) {
             localStorage.setItem("authorization", userDetails.token);
             addUserToStore(userDetails);
-            // props.history.push("/game"); // push to next page;
+            if (prevPath !== undefined ) {
+              history.replace(prevPath);
+            } else {
+              history.replace("/home");
+            }
           } else {
             alert("Can't log you in");
           }
@@ -44,7 +48,7 @@ let RegisterUserWrapper = ({ props, addUserToStore }) => {
     <div className="register">
       <div>
         <h1>Register New User</h1>
-      </div>    
+      </div>
       <div>
         <form className="form" onSubmit={handleSubmit}>
           <input type="text" name="username" onChange={readUserName} placeholder="username"/>
@@ -60,6 +64,12 @@ let RegisterUserWrapper = ({ props, addUserToStore }) => {
       </div>
     </div>
   );
+};
+
+RegisterUserWrapper.propTypes = {
+  addUserToStore:PropTypes.function.isRequired,
+  location:PropTypes.object.isRequired,
+  history:PropTypes.object.isRequired
 };
 
 let mapStateToProps = (state, props) => ({ state, props });

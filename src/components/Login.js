@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { fetchToken } from "../lib/api-calls";
 import { addUserToStore } from "../actions/index";
 import PropTypes from "prop-types";
 
-let LoginWrapper = ({ addUserToStore }) => {
+let LoginWrapper = ({ addUserToStore,history, location:{state:prevPath} }) => {
 
   let userCredentials = {};
 
@@ -18,7 +18,11 @@ let LoginWrapper = ({ addUserToStore }) => {
           if(userDetails.token) {
             localStorage.setItem("authorization", userDetails.token);
             addUserToStore(userDetails);
-            // props.history.push("/game"); // push to next page;
+            if (prevPath !== undefined ) {
+              history.replace(prevPath);
+            } else {
+              history.replace("/home");
+            }
           } else {
             alert("Can't log you in");
           }
@@ -51,7 +55,7 @@ let LoginWrapper = ({ addUserToStore }) => {
       </div>
       <div className="login-register">
         <p>New User? Please&nbsp;
-          <Link to={"/register"}>Register</Link>&nbsp;here
+          <Redirect to={"/register"}>Register</Redirect>&nbsp;here
         </p>
       </div>
     </div>
@@ -59,7 +63,9 @@ let LoginWrapper = ({ addUserToStore }) => {
 };
 
 LoginWrapper.propTypes = {
-  addUserToStore:PropTypes.function.required
+  addUserToStore:PropTypes.function.isRequired,
+  lastLocation:PropTypes.string.isRequired,
+  history:PropTypes.object.isRequired
 };
 
 let mapDispatchToProps = dispatch =>  ({ addUserToStore: (userDetails) => dispatch(addUserToStore(userDetails)) });
