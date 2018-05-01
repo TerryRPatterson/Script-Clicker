@@ -5,8 +5,8 @@ module.exports = {
         "node": true
     },
     "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "sourceType": "module",
@@ -32,6 +32,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "import/no-unresolved": 0
     }
 };
