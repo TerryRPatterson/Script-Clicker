@@ -1,15 +1,19 @@
+import { addUserToStore } from "../actions/index";
+import { addUserToStoreReducer } from "./reducer-fns";
+
 const initialState = {
-  currentLocation: "",
-  currentEncounter: [],
+  user: {},
   inventory: {},
   characterId: "",
   playerId: "",
+  currentEncounter: [],
   currentLevel: 0,
+  currentLocation: "",
   characterHealth: 0
 };
 
 let reducers = {
-
+  [addUserToStore]: addUserToStoreReducer
 };
 
 let fallbackReducer = state => state;
