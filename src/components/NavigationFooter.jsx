@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import "navFooter.css";
+import "./navFooter.css";
 
 let navFooter = () => {
   return (
@@ -11,3 +11,5 @@ let navFooter = () => {
     </nav>
   );
 };
+
+export default navFooter;
