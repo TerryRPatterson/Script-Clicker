@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { fetchToken } from "../lib/api-calls";
 import { addUserToStore } from "../actions/index";
+import PropTypes from "prop-types";
 
-
-let LoginWrapper = ({ props, addUserToStore }) => {
+let LoginWrapper = ({ addUserToStore }) => {
 
   let userCredentials = {};
 
@@ -58,10 +58,12 @@ let LoginWrapper = ({ props, addUserToStore }) => {
   );
 };
 
-let mapStateToProps = (state, props) => ({ state, props });
+LoginWrapper.propTypes = {
+  addUserToStore:PropTypes.function.required
+};
 
 let mapDispatchToProps = dispatch =>  ({ addUserToStore: (userDetails) => dispatch(addUserToStore(userDetails)) });
 
-let Login = connect(mapStateToProps, mapDispatchToProps)(LoginWrapper);
+let Login = connect(null, mapDispatchToProps)(LoginWrapper);
 
 export default Login;
