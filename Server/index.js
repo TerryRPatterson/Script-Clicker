@@ -2,7 +2,6 @@
 
 console.log("Server Starting");
 
-require("dotenv").config();
 require('dotenv-safe').config()
 
 const express = require("express");
