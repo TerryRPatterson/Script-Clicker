@@ -1,8 +1,6 @@
 Welcome to Request Quest! A turn based rpg.
 
 
-
-
 Api
 
   When running the server a few api options are avaible to you:
