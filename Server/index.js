@@ -64,8 +64,5 @@ app.use(express.urlencoded());
 app.use("/auth", tokenApi);
 app.use("/api", api);
 app.use("/",express.static(process.env.PUBLICDIR));
-app.use("/", (req, res, next) => {
-  res.sendFile(`${process.env.PUBLICDIR}${req.url}`);
-});
 
 app.listen(process.env.PORT || 3000, () => console.log("Server is now listening."));
