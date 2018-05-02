@@ -3,7 +3,8 @@ const bcrypt = require("bcrypt");
 const { findUserByEmail } = require('./database');
 
 let checkToken = async (req, res, next) => {
-  let { authorization: token } = req.headers;
+  let { authorization: Bearertoken } = req.headers;
+  let token = Bearertoken.split(" ")[1];
   let payload;
   try {
     payload = jwt.verify(token, process.env.SIGNATURE);
@@ -35,11 +36,11 @@ let userLogin = async (req, res) => {
     let token = createToken(user);
     res.send(token);
   } else {
-    res.send(401, "Missing/Incorrect Password");
+    res.sendStatus(401, "Missing/Incorrect Password");
   }
 };
 
-let userRegister = (req, res) => {
+let userRegister = async (req, res) => {
   res.send("You went to Register!");
 };
 
