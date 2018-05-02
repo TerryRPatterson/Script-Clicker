@@ -14,6 +14,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import LoginRedirect from "./components/LoginRedirect";
 import thunk from "redux-thunk";
+import {verify}  from "./actions"
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   && applyMiddleware(thunk));
@@ -36,5 +37,12 @@ let reactAppReduxStore =
   </Provider>;
 
 ReactDOM.render( reactAppReduxStore, document.getElementById("root"));
+
+window.on("load", () => {
+  let token = localStorage.getItem("authorization")
+  if (token !== null) {
+    store.dispatch(verify("start",token));
+  }
+});
 
 registerServiceWorker();
