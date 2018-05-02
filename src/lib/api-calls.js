@@ -1,5 +1,5 @@
 export let fetchToken = (userCredentials) =>
-  fetch(`${process.env.BACKEND}/api/login`, {
+  fetch("/api/login", {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
@@ -8,8 +8,7 @@ export let fetchToken = (userCredentials) =>
   });
 
 export let registerUser = (userCredentials) => {
-  console.dir(process.env);
-  fetch(`${process.env.BACKEND}/api/create`, {
+  fetch("/api/create", {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
