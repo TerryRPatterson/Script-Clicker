@@ -7,6 +7,7 @@ import Routes from "./Routes";
 import reducer from "./reducers/index";
 import registerServiceWorker from "./registerServiceWorker";
 
+
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 let reactAppReduxStore =

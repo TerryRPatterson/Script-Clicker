@@ -7,7 +7,8 @@ export let fetchToken = (userCredentials) =>
     })
   });
 
-export let registerUser = (userCredentials) =>
+export let registerUser = (userCredentials) => {
+  console.dir(process.env);
   fetch(`${process.env.BACKEND}/api/create`, {
     method: "POST",
     body: JSON.stringify(userCredentials),
@@ -15,3 +16,4 @@ export let registerUser = (userCredentials) =>
       "Content-Type": "application/json"
     })
   });
+};
