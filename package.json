@@ -5,7 +5,7 @@
   "dependencies": {
     "dotenv": "^5.0.1",
     "dotenv-safe": "^5.0.1",
-    "dotenv-webpack": "^1.5.5",
+    "eslint-plugin-react": "^7.7.0",
     "express": "^4.16.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
@@ -21,7 +21,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "eslint-plugin-react": "^7.7.0"
-  }
+  "devDependencies": {}
 }
