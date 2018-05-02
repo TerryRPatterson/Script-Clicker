@@ -1,19 +1,26 @@
-import { addUserToStore } from "../actions/index";
+import { addUserToStore, verify } from "../actions";
 import { addUserToStoreReducer } from "./reducer-fns";
+import verifyReducer from "./verification-reducer";
 
 const initialState = {
-  user: {},
-  inventory: {},
-  characterId: "",
-  playerId: "",
-  currentEncounter: [],
-  currentLevel: 0,
-  currentLocation: "",
-  characterHealth: 0
+  currentEncounter:[],
+  currentEncounterID: 0,
+  currentEncouterProgress:0,
+  inventory: [],
+  player:{
+    name:null,
+    id:null
+  },
+  character:{
+    health:0,
+    id:null,
+    name:null
+  }
 };
 
 let reducers = {
-  [addUserToStore]: addUserToStoreReducer
+  [addUserToStore]: addUserToStoreReducer,
+  [verify]: verifyReducer
 };
 
 let fallbackReducer = state => state;
