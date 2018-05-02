@@ -9,13 +9,15 @@ import {
 import "./index.css";
 import reducer from "./reducers/index";
 import NavFooter from "./components/NavigationFooter";
+import registerServiceWorker from "./registerServiceWorker";
+
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 let reactAppReduxStore =
   <Provider store={store}>
     <Router>
-      <Switch> 
+      <Switch>
         <Route exact path="/register" componet="test"/>
         <Route exact path="/login" componet="Test"/>
         <Route>
@@ -29,3 +31,5 @@ let reactAppReduxStore =
   </Provider>;
 
 ReactDOM.render( reactAppReduxStore, document.getElementById("root"));
+
+registerServiceWorker();
