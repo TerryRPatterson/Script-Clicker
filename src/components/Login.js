@@ -55,7 +55,8 @@ let LoginWrapper = ({ addUserToStore,history, location:{state:prevPath} }) => {
       </div>
       <div className="login-register">
         <p>New User? Please&nbsp;
-          <Link to={"/register"} replace>Register</Link>&nbsp;here
+          <Link to={{pathname:"/register", state:{prevPath}}} replace>Register
+          </Link>&nbsp;here
         </p>
       </div>
     </div>
