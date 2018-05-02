@@ -5,3 +5,52 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: skyblue;
+}
+
+.register {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: skyblue;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form input {
+    margin: 10px 0 10px 0;
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.form .submit {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+div h1,
+.form input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+div p {
+    font-family: monospace;
+}
