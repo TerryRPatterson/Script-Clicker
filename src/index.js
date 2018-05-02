@@ -16,7 +16,7 @@ window.store = store;
 let reactAppReduxStore =
   <Provider store={store}>
     <Router>
-      <Switch>
+      <Switch> 
         <Route exact path="/register" componet="test"/>
         <Route exact path="/login" componet="Test"/>
         <Route>
