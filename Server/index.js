@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 require('dotenv-safe').config();
 const express = require("express");
 const {
