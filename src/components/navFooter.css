@@ -1,4 +1,23 @@
+@import "../siteTheme.css";
 
 .disabled {
     pointer-events: none;
+}
+
+nav {
+    background: var(--background);
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+a.active {
+    background: rgb(25, 70, 12);
+}
+a {
+    color: var(--textColor);
+    text-decoration: none;
+}
+:visited {
+    color: var(--textColor);
+    text-decoration: none;
 }

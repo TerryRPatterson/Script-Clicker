@@ -6,8 +6,9 @@ let navFooter = () => {
   return (
     <nav>
       <NavLink to="/explore">Explore</NavLink>
-      <NavLink to="/battle" className="disabled" tabIndex="-1">Fight</NavLink>
+      <NavLink to="/battle">Fight</NavLink>
       <NavLink to="/inventory">Inventory</NavLink>
+      <NavLink to="/stats">Player Stats</NavLink>
     </nav>
   );
 };
