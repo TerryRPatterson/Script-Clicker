@@ -5,6 +5,9 @@ import { fetchToken } from "../lib/api-calls";
 import { addUserToStore } from "../actions/index";
 import PropTypes from "prop-types";
 
+import "./userControlPages.css";
+import "./Login.css"
+
 let LoginWrapper = ({ addUserToStore,history, location:{state:prevPath} }) => {
 
   let userCredentials = {};

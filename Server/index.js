@@ -1,12 +1,37 @@
 #! /usr/bin/env node
 
-console.log("Server Starting");
-
-require('dotenv-safe').config()
-
+require("dotenv-safe").config();
 const express = require("express");
+const {
+  userLogin,
+  userRegister,
+  checkToken,
+  createToken
+} = require("./users");
+
 const app = express();
+let Router = express.Router;
 
-app.use("/",express.static(process.env.PUBLICDIR));
+let tokenApi = new Router();
+tokenApi.post("/login", userLogin);
+tokenApi.post("/register", userRegister);
 
-app.listen(process.env.PORT || 3000, () => console.log("Server is now listening."));
+let api = new Router();
+api.use("/", checkToken);
+api.get("/test", (req, res) => {
+  res.send("Yay!");
+});
+
+app.use(express.json());
+app.use(express.urlencoded());
+app.use("/auth", tokenApi);
+app.use("/api", api);
+app.use("/", (req, res, next) => {
+  res.sendFile(process.env.PUBLICDIR + req.url);
+});
+app.use((err, req, res, next) => {
+  res.sendFile(process.env.PUBLICDIR + "/index.html");
+});
+
+
+app.listen(process.env.PORT, () => console.log("Server is now listening.", process.env.PORT));
