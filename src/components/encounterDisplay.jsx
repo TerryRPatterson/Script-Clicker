@@ -4,6 +4,7 @@ import {progressEncounter} from "../actions/EncounterControl";
 
 import Line from "./dialogueLine";
 import Battle from "./battle";
+import Loading from "./loading";
 
 let mapStateToProps = ({currentEncounter, currentEncounterProgress,
   currentEncounterID}) => {
@@ -18,18 +19,26 @@ let encounterDisplay = (
     currentEncounterID
   }) => {
 
+  if (!currentEncounter) {
+    return <Loading/>;
+  }
+
   let scene = currentEncounter[currentEncounterProgress];
 
-  if (scene["type"] === "dialouge") {
+  if (scene["type"] === "DIALOGUE") {
     return <Line progressEncounter={progressEncounter} body={scene["body"]}
       speaker={scene["speaker"]} currentEncounter={currentEncounter}
-      currentEncounterProgress={currentEncounterProgress} 
+      currentEncounterProgress={currentEncounterProgress}
       currentEncounterID={currentEncounterID}/>;
   }
-  else if (scene["type"] === "battle") {
+  else if (scene["type"] === "BATTLE") {
     return <Battle progressEncounter={progressEncounter} enemy={scene["enemy"]}
     />;
   }
+  else if (scene["type"] === "LOADING") {
+    return <Loading/>;
+  }
+  return <Loading/>;
 };
 
 let encounterDisplayConnected = connect(mapStateToProps, mapDispatchToProps)(encounterDisplay);

@@ -1,7 +1,7 @@
 import React from "react";
 
-let Battle = () =>
-  <p>Battles will be added later</p>;
-
+let Battle = () => {
+  return <p>Battles will be added later</p>;
+};
 
 export default Battle;

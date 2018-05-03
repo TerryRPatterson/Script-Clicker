@@ -14,6 +14,7 @@ let encounters = [
       body: "You find yourself in a forest."
     },
     {
+
       type: DIALOGUE,
       speaker: "You",
       body: "I'm in a forest!"
