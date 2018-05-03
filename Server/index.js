@@ -28,4 +28,4 @@ app.use("/auth", tokenApi);
 app.use("/api", api);
 app.use("/", express.static(process.env.PUBLICDIR));
 
-app.listen(process.env.PORT || 3000, () => console.log("Server is now listening.", process.env.PORT));
+app.listen(process.env.PORT, () => console.log("Server is now listening.", process.env.PORT));
