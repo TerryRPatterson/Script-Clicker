@@ -34,7 +34,7 @@ let userLogin = async (req, res) => {
   let isValid = await bcrypt.compare(password, user.pass);
   if (isValid) {
     let token = createToken(user);
-    res.send(token);
+    res.send({ token });
   } else {
     res.sendStatus(401, "Missing/Incorrect Password");
   }
