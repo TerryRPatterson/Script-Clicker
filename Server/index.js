@@ -1,13 +1,13 @@
 #! /usr/bin/env node
 
-require('dotenv-safe').config();
+require("dotenv-safe").config();
 const express = require("express");
 const {
   userLogin,
   userRegister,
   checkToken,
   createToken
-} = require('./users');
+} = require("./users");
 
 const app = express();
 let Router = express.Router;
@@ -28,6 +28,10 @@ app.use("/auth", tokenApi);
 app.use("/api", api);
 app.use("/", (req, res, next) => {
   res.sendFile(process.env.PUBLICDIR + req.url);
-})
+});
+app.use((err, req, res, next) => {
+  res.sendFile(process.env.PUBLICDIR + "/index.html");
+});
+
 
 app.listen(process.env.PORT, () => console.log("Server is now listening.", process.env.PORT));
