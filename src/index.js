@@ -38,8 +38,8 @@ let reactAppReduxStore =
 
 ReactDOM.render( reactAppReduxStore, document.getElementById("root"));
 
-window.on("load", () => {
-  let token = localStorage.getItem("authorization")
+window.addEventListener("load", () => {
+  let token = localStorage.getItem("authorization");
   if (token !== null) {
     store.dispatch(verify("start",token));
   }

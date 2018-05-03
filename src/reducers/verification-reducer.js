@@ -1,10 +1,11 @@
-import {verify} from "./actions";
-let verifyReducer = (action) => {
+import {verify} from "../actions";
+let verifyReducer = ({status, payload, token}) => {
+
   if (status === "start"){
     return async (dispatch) => {
       let payload = await fetch({
         url:"/api/load",
-        authorization:`Bearer ${action["token"]}`
+        authorization:`Bearer ${token}`
       })
       if (payload.status === 401) {
         dispatch(verify("error", payload.status));
@@ -15,10 +16,10 @@ let verifyReducer = (action) => {
     };
   }
   else if (status === "complete") {
-    return action["payload"];
+    return payload;
   }
   else if (status === "error") {
-      localStorage.setItem("authorization", JSON.stringify(null));
+    localStorage.setItem("authorization", JSON.stringify(null));
     return null;
   }
 };
