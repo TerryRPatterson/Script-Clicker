@@ -31,8 +31,7 @@ let encounters = [
         1: 1
       }
     }
-  ],
-  ["Hello"]
+  ]
 ];
 
 let findUserByEmail = async email => {
@@ -41,11 +40,13 @@ let findUserByEmail = async email => {
   return user;
 }
 
-let getEncounter = (req, res) => {
+let getEncounter = async (req, res) => {
   let id = req.params.id;
+  let queryString = "SELECT encounter_list FROM encounters WHERE id = $1;";
+  let encounterList = await db.one(queryString, id);
   res.setHeader("Content-Type", "application/json");
-  res.send(JSON.stringify(encounters[id] || null));
-}
+  res.send(JSON.stringify(encounterList));
+};
 
 let loadData = async (req, res) => {
   let { authorization: Bearertoken } = req.headers;
@@ -61,6 +62,7 @@ let loadData = async (req, res) => {
     WHERE u.id = $1;`;
   let result = await db.one(queryString, userId);
   let data = {
+    currentEncounter: [{type: "LOADING"}],
     currentEncounterID: result.encounter_id,
     currentEncounterProgress: 0,
     inventory: JSON.parse(result.items),
@@ -76,10 +78,10 @@ let loadData = async (req, res) => {
   };
   res.setHeader("Content-Type", "application/json");
   res.send(JSON.stringify(data));
-  };
+};
 
-  module.exports = {
-    findUserByEmail,
-    getEncounter,
-    loadData
-  };
+module.exports = {
+  findUserByEmail,
+  getEncounter,
+  loadData
+};
