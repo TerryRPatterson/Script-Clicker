@@ -27,7 +27,7 @@ const initialState = {
 
 let reducers = {
   [addUserToStore]: addUserToStoreReducer,
-  [progressEncounter]: progressEncounterReducer
+  [progressEncounter]: progressEncounterReducer,
   [verify]: verifyReducer
 };
 
