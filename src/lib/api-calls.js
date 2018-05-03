@@ -1,5 +1,5 @@
 export let fetchToken = (userCredentials) => {
-  return fetch("/auth/login", {
+  return fetch("http://localhost:3001/auth/login", {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
@@ -8,7 +8,7 @@ export let fetchToken = (userCredentials) => {
   });
 };
 export let registerUser = (userCredentials) => {
-  return fetch("/auth/create", {
+  return fetch("http://localhost:3001/auth/create", {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
@@ -18,7 +18,7 @@ export let registerUser = (userCredentials) => {
 };
 
 export let getEncounter = (currentEncounter) => {
-  return fetch(`/api/encounter/${currentEncounter}`,{
+  return fetch(`http://localhost:3001/api/encounter/${currentEncounter}`,{
     method:"GET",
     headers: new Headers({
       "Content-Type": "application/json",

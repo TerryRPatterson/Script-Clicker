@@ -2,6 +2,7 @@
 
 require("dotenv-safe").config();
 const express = require("express");
+const cors = require("cors");
 const {
   userLogin,
   userRegister,
@@ -15,6 +16,8 @@ const {
 
 const app = express();
 let Router = express.Router;
+
+app.use(cors());
 
 let tokenApi = new Router();
 tokenApi.post("/login", userLogin);

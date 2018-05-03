@@ -7,17 +7,17 @@ pgp.pg.defaults.ssl = true;
 let encounters = [
   [
     {
-      type: "dialogue",
+      type: "DIALOGUE",
       speaker: "Narrator",
       body: "You find yourself in a forest."
     },
     {
-      type: "dialogue",
+      type: "DIALOGUE",
       speaker: "You",
       body: "I'm in a forest!"
     },
     {
-      type: "combat",
+      type: "COMBAT",
       enemy: {
         name: "Goblin",
         health: 5,
