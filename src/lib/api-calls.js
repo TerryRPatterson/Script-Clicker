@@ -1,5 +1,5 @@
 export let fetchToken = (userCredentials) =>
-  fetch("/api/login", {
+  fetch("/auth/login", {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
@@ -8,7 +8,7 @@ export let fetchToken = (userCredentials) =>
   });
 
 export let registerUser = (userCredentials) => {
-  fetch("/api/create", {
+  fetch("/auth/create", {
     method: "POST",
     body: JSON.stringify(userCredentials),
     headers: new Headers({
