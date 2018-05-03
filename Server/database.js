@@ -24,7 +24,8 @@ let encounters = [
       },
       loot: { 1: 1 }
     }
-  ]
+  ],
+  ["Hello"]
 ];
 
 let findUserByEmail = async email => {
