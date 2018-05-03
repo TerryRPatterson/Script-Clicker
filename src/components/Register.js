@@ -6,7 +6,7 @@ import { addUserToStore } from "../actions/index";
 import PropTypes from "prop-types";
 
 import "./userControlPages.css";
-import "./Login.css"
+import "./Register.css";
 
 let RegisterUserWrapper =
   ({ addUserToStore, location:{state:prevPath}, history}) => {
