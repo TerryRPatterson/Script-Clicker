@@ -4,9 +4,8 @@ import {getEncounter} from "../lib/api-calls";
 let verify = (status, payload) => {
   if (status === "start"){
     let token = `Bearer ${payload}`;
-    console.log(token);
     return async (dispatch) => {
-      let response = await fetch("http://localhost:3001/api/load",{
+      let response = await fetch("/api/load",{
         method:"GET",
         headers: new Headers({
           authorization:token,
