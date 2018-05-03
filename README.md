@@ -5,9 +5,9 @@ Api
 
   When running the server a few api options are avaible to you:
 
-    /api/create - POST payload: {Email, username , password} returns json web token
+    /auth/create - POST payload: {Email, username , password} returns json web token
 
-    /api/login - POST payload: {Email or username, password} returns json web token
+    /auth/login - POST payload: {Email or username, password} returns json web token
 
     /api/new - POST payload: {character name as name} authorization: "Bearer {json web token}" returns intial save
 
