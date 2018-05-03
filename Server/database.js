@@ -2,31 +2,37 @@ const jwt = require("jsonwebtoken");
 const pgp = require('pg-promise')();
 const db = pgp(process.env.DATABASE_URL);
 pgp.pg.defaults.ssl = true;
+const DIALOGUE = "DIALOGUE";
+const COMBAT = "COMBAT";
 
 // Test Data
 let encounters = [
   [
     {
-      type: "DIALOGUE",
+      type: DIALOGUE,
       speaker: "Narrator",
       body: "You find yourself in a forest."
     },
     {
-      type: "DIALOGUE",
+
+      type: DIALOGUE,
       speaker: "You",
       body: "I'm in a forest!"
-    },
+    }
+  ],
+  [
     {
-      type: "COMBAT",
+      type: COMBAT,
       enemy: {
         name: "Goblin",
         health: 5,
         attack: 1
       },
-      loot: { 1: 1 }
+      loot: {
+        1: 1
+      }
     }
-  ],
-  ["Hello"]
+  ]
 ];
 
 let findUserByEmail = async email => {
@@ -35,11 +41,13 @@ let findUserByEmail = async email => {
   return user;
 }
 
-let getEncounter = (req, res) => {
+let getEncounter = async (req, res) => {
   let id = req.params.id;
+  let queryString = "SELECT encounter_list FROM encounters WHERE id = $1;";
+  let encounterList = await db.one(queryString, id);
   res.setHeader("Content-Type", "application/json");
-  res.send(JSON.stringify(encounters[id] || null));
-}
+  res.send(JSON.stringify(encounterList));
+};
 
 let loadData = async (req, res) => {
   let { authorization: Bearertoken } = req.headers;
@@ -55,6 +63,7 @@ let loadData = async (req, res) => {
     WHERE u.id = $1;`;
   let result = await db.one(queryString, userId);
   let data = {
+    currentEncounter: [{type: "LOADING"}],
     currentEncounterID: result.encounter_id,
     currentEncounterProgress: 0,
     inventory: JSON.parse(result.items),
@@ -70,10 +79,10 @@ let loadData = async (req, res) => {
   };
   res.setHeader("Content-Type", "application/json");
   res.send(JSON.stringify(data));
-  };
+};
 
-  module.exports = {
-    findUserByEmail,
-    getEncounter,
-    loadData
-  };
+module.exports = {
+  findUserByEmail,
+  getEncounter,
+  loadData
+};
