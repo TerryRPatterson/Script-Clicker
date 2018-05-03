@@ -5,9 +5,8 @@ import "./navFooter.css";
 let navFooter = () => {
   return (
     <nav>
-      <NavLink to="/main">Main</NavLink>
+      <NavLink to="/main">main</NavLink>
       <NavLink to="/inventory">Inventory</NavLink>
-      <NavLink to="/stats">Player Stats</NavLink>
     </nav>
   );
 };
