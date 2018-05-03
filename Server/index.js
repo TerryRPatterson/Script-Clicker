@@ -8,6 +8,9 @@ const {
   checkToken,
   createToken
 } = require("./users");
+const {
+  getEncounter
+} = require("./database");
 
 const app = express();
 let Router = express.Router;
@@ -18,6 +21,7 @@ tokenApi.post("/register", userRegister);
 
 let api = new Router();
 api.use("/", checkToken);
+api.get("/encounter/:id", getEncounter);
 api.get("/test", (req, res) => {
   res.send("Yay!");
 });
