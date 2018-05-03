@@ -13,6 +13,8 @@ import registerServiceWorker from "./registerServiceWorker";
 import EncounterDisplay from "./components/encounterDisplay";
 
 
+
+
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 let reactAppReduxStore =
@@ -23,14 +25,12 @@ let reactAppReduxStore =
         <Route exact path="/login" componet="Test"/>
         <Route>
           <main className="main">
+            <NavFooter/>
             <Route exact path="/main" component={
               () => {
-                return <EncounterDisplay currentEncounter={[
-                  {type:"dialouge", speaker:"Test", body:"Hello"}]}
-                currentEncounterProgress={0}/>
+                return <EncounterDisplay/>
               }
             }/>
-            <NavFooter/>
           </main>
         </Route>
       </Switch>

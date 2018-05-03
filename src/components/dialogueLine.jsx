@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 let dialougeLine = ({body, speaker, progressEncounter}) => {
   return <p onClick={progressEncounter}>
-    `${speaker}: ${body}`
+    {`${speaker}: ${body}`}
   </p>;
 };
 

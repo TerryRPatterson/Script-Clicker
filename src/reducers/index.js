@@ -2,13 +2,19 @@ import { addUserToStore } from "../actions/index";
 import { addUserToStoreReducer } from "./reducer-fns";
 import {progressEncounter} from "../actions/EncounterControl";
 import progressEncounterReducer from "./progressEncounterReducer";
+
+let testLine = {type:"dialouge", speaker:"Test", body:"Hello"};
+let testLine2 = {type:"dialouge", speaker:"Test2", body:"sup"}
+let testEncounter = [];
+testEncounter.push(testLine);
+testEncounter.push(testLine2);
 const initialState = {
   user: {},
   inventory: {},
   characterId: "",
   playerId: "",
-  currentEncounter: [],
-  currentLevel: 0,
+  currentEncounter: testEncounter,
+  currentEncounterProgress:0,
   currentLocation: "",
   characterHealth: 0
 };
