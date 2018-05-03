@@ -18,13 +18,13 @@ export let verify = (status, payload) => {
       type:"VERIFY",
       status:status,
       token:payload
-    })
+    });
   }
   else if (status === "error") {
     return ({
       status:status,
       type:"VERIFY",
-    })
+    });
   }
 };
 
