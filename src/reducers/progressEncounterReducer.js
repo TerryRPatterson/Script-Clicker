@@ -11,3 +11,5 @@ let progressEncounterReducer = (action , state) => {
   }
 
 };
+
+export default progressEncounterReducer;

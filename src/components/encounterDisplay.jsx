@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {progressEncounter} from "EncounterControl";
+import {progressEncounter} from "../actions/EncounterControl";
 
-import Line from "./dialougeLine";
+import Line from "./dialogueLine";
 import Battle from "./battle";
 
 let mapStateToProps = ({currentEncounter, currentEncounterProgress}) => {

@@ -1,7 +1,7 @@
 import { addUserToStore } from "../actions/index";
 import { addUserToStoreReducer } from "./reducer-fns";
 import {progressEncounter} from "../actions/EncounterControl";
-import {progressEncounterReducer} from "./progressEncounterReducer";
+import progressEncounterReducer from "./progressEncounterReducer";
 const initialState = {
   user: {},
   inventory: {},
@@ -15,7 +15,7 @@ const initialState = {
 
 let reducers = {
   [addUserToStore]: addUserToStoreReducer,
-  [progressEncounter]:progressEncounterReducer
+  [progressEncounter]: progressEncounterReducer
 };
 
 let fallbackReducer = state => state;

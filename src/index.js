@@ -10,6 +10,7 @@ import "./index.css";
 import reducer from "./reducers/index";
 import NavFooter from "./components/NavigationFooter";
 import registerServiceWorker from "./registerServiceWorker";
+import EncounterDisplay from "./components/encounterDisplay";
 
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
@@ -22,7 +23,13 @@ let reactAppReduxStore =
         <Route exact path="/login" componet="Test"/>
         <Route>
           <main className="main">
-            <Route exact path="/explore" component={NavFooter}/>
+            <Route exact path="/main" component={
+              () => {
+                return <EncounterDisplay currentEncounter={[
+                  {type:"dialouge", speaker:"Test", body:"Hello"}]}
+                currentEncounterProgress={0}/>
+              }
+            }/>
             <NavFooter/>
           </main>
         </Route>
