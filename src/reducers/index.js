@@ -10,8 +10,13 @@ import attack from "../actions/BattleControl.js";
 import newBattle from "../actions/newBattle.js";
 import newBattleReducer from "./newBattleReducer.js";
 
+let testLine = {type:"DIALOGUE", speaker:"Test", body:"Hello"};
+let testLine2 = {type:"DIALOGUE", speaker:"Test2", body:"sup"};
+let testEncounter = [];
+testEncounter.push(testLine);
+testEncounter.push(testLine2);
 const initialState = {
-  currentEncounter:{type:"LOADING"},
+  currentEncounter:testEncounter,
   currentEncounterID: 0,
   currentEncounterProgress:0,
   inventory: [],
