@@ -1,20 +1,22 @@
 import {progressEncounter} from "./EncounterControl";
 import gameOver from "./gameOver";
 
-let attack = (enemey, character) => {
-  let enemeyHealth = enemey["health"] - character["attack"];
-  let characterHealth = character["health"] - enemey["attack"];
-  if (characterHealth < 0) {
+let attack = (character, enemy, encounterData) => {
+  console.log(enemy);
+  console.log(character);
+  let enemyHealth = enemy["health"] - 1;
+  let characterHealth = character["health"] - enemy["attack"];
+  if (characterHealth <= 0) {
     return (dispatch) => {
-      dispatch(gameOver(enemey["name"]));
+      dispatch(gameOver(enemy["name"]));
     };
   }
-  else if (enemeyHealth <= 0) {
+  else if (enemyHealth <= 0) {
     return (dispatch) => {
-      dispatch(progressEncounter());
+      dispatch(progressEncounter(encounterData));
     };
   }
-  return {type:"ATTACK", characterHealth, enemeyHealth};
+  return {type:"ATTACK", characterHealth, enemyHealth};
 };
 
 attack.toString = () =>  "ATTACK";
