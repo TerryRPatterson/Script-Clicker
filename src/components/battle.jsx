@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import newBattleAction from "../actions/newBattle.js";
 import attackAction from "../actions/BattleControl.js";
+import "./css/battle.css";
 
 let mapStateToProps = ({character, battleEventList, currentEncounter,
   currentEncounterProgress, currentEncounterID}) => {
