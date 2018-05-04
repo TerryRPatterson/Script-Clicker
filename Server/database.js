@@ -44,10 +44,9 @@ let findUserByEmail = async email => {
 let getEncounter = async (req, res) => {
   let id = req.params.id;
   let queryString = "SELECT encounter_list FROM encounters WHERE id = $1;";
-  let encounterResult = await db.one(queryString, id);
-  let { encounters: encounter_list } = JSON.stringify(encounterResult);
+  let { encounter_list } = await db.one(queryString, id);
   res.setHeader("Content-Type", "application/json");
-  res.send(JSON.stringify(encounters));
+  res.send(JSON.stringify(encounter_list));
 };
 
 let loadData = async (req, res) => {
@@ -64,7 +63,7 @@ let loadData = async (req, res) => {
     WHERE u.id = $1;`;
   let result = await db.one(queryString, userId);
   let data = {
-    currentEncounter: [{type: "LOADING"}],
+    currentEncounter: [{ type: "LOADING" }],
     currentEncounterID: result.encounter_id,
     currentEncounterProgress: 0,
     inventory: JSON.parse(result.items),

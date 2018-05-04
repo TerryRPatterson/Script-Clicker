@@ -38,7 +38,7 @@ Save Games Should be formatted like:
 
       currentEncounterID: 0,
 
-      currentEncouterProgress:0,
+      currentEncounterProgress:0,
 
       inventory: {
       object key id value quantity
