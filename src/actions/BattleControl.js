@@ -2,6 +2,8 @@ import {progressEncounter} from "./EncounterControl";
 import gameOver from "./gameOver";
 
 let attack = (character, enemy, encounterData) => {
+  console.log(enemy);
+  console.log(character);
   let enemyHealth = enemy["health"] - 1;
   let characterHealth = character["health"] - enemy["attack"];
   if (characterHealth <= 0) {
