@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Line from "./dialogueLine";
 import Battle from "./battle";
 import Loading from "./loading";
+import Victory from "./victory";
 
 let mapStateToProps = ({currentEncounter, currentEncounterProgress,
   currentEncounterID}) => {
@@ -21,26 +22,24 @@ let encounterDisplay = (
   }) => {
 
   if (!currentEncounter) {
-    console.log("test1");
     return <Loading/>;
   }
 
   let scene = currentEncounter[currentEncounterProgress];
-  console.log(scene);
-  console.log(scene["type"] === "DIALOGUE")
   if (scene["type"] === "DIALOGUE") {
     return <Line progressEncounter={progressEncounter} body={scene["body"]}
       speaker={scene["speaker"]} currentEncounter={currentEncounter}
       currentEncounterProgress={currentEncounterProgress}
       currentEncounterID={currentEncounterID}/>;
   }
-  else if (scene["type"] === "BATTLE") {
-    return <Battle progressEncounter={progressEncounter} enemy={scene["enemy"]}
-    />;
+  else if (scene["type"] === "COMBAT") {
+    return <Battle/>;
   }
   else if (scene["type"] === "LOADING") {
-    console.log("Test2");
     return <Loading/>;
+  }
+  else if (scene["type"] === "VICTORY") {
+    return <Victory/>;
   }
   return <Loading/>;
 };

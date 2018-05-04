@@ -1,10 +1,10 @@
 import {newEncounter} from "./EncounterControl";
 
-let gameOver = (enemeyName) => {
+let gameOver = (enemyName) => {
   let message;
-  if (enemeyName) {
+  if (enemyName) {
     message ="It was at this point our hero's"+
-        `journey came to an end at the hands of ${enemeyName}.`;
+        `journey came to an end at the hands of ${enemyName}.`;
   }
   else {
     message ="It was at this time the hero's journey ended for an unknown"+
