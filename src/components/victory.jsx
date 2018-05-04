@@ -1,7 +1,7 @@
 import React from "react";
 
 let victory = () => {
-  return <div>A winner is you</div>;
+  return <div className="victoryText">A winner is you</div>;
 };
 
 export default victory;
