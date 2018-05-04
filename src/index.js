@@ -17,7 +17,7 @@ import LoginRedirect from "./components/LoginRedirect";
 import thunk from "redux-thunk";
 import verify  from "./actions/verification-action.js";
 
-const composeEnhancers = compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer,composeEnhancers(
   applyMiddleware(thunk)
 ));
@@ -48,4 +48,4 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-registerServiceWorker();
+// registerServiceWorker();
