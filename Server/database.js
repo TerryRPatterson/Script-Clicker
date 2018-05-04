@@ -46,7 +46,7 @@ let getEncounter = async (req, res) => {
   let queryString = "SELECT encounter_list FROM encounters WHERE id = $1;";
   let { encounter_list } = await db.one(queryString, id);
   res.setHeader("Content-Type", "application/json");
-  res.send(JSON.stringify(encounter_list));
+  res.send(encounter_list);
 };
 
 let loadData = async (req, res) => {
