@@ -25,12 +25,12 @@
   font-size: 1.5rem;
 }
 
-.charName {
+.characterName {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.charHealth {
+.characterHealth {
   padding-top: 10px;
   font-size: 1.5rem;
 }
